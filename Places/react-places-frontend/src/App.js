@@ -46,4 +46,8 @@ Next: Inside the places folder, under pages create 'NewPlace.js'
   - anytime it evaulates a reading/matching url, it will match and NOT continue to go through the other routes.
       - react routes work top down and this will stop that from happening
 
+_______------------________--------------_______------------________-------------_______------------________
+
+
+The main goal of <Users /> is to render a list of users along with how may places they've been too.
 */
