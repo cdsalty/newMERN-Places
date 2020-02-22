@@ -3,18 +3,26 @@ import './UserItem.css';
 
 const UserItem = (props) => {
   return (
-    <ul className="user-item">
+    <li className="user-item">
       <div className="user-item__content">
         <div className="user-item__image">
           <img src={props.image} alt={props.image} />
         </div>
         <div className="user-item__info">
           <h2>{props.name}</h2>
-          <h3>to finish up</h3>
+          <h3>
+            {props.placeCount} {props.placeCount === 1 ? 'Place' : 'Places'}
+          </h3>
         </div>
       </div>
-    </ul>
+    </li>
   );
 };
 
 export default UserItem;
+
+/*
+Note: how to display something is plural or not via a ternary expression
+  - {props.placeCount} {props.placeCount === 1 ? 'Place' : 'Places'}
+
+*/
