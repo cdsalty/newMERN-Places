@@ -2,19 +2,23 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact>
-          <Users />
-        </Route>
-        <Route path="/places/new" exact>
-          <NewPlace />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
+      <MainNavigation />
+      <main className="this-creates-seperation-from-the-NavigationBar">
+        <Switch>
+          <Route path="/" exact>
+            <Users />
+          </Route>
+          <Route path="/places/new" exact>
+            <NewPlace />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </main>
     </Router>
   );
 };
@@ -50,4 +54,16 @@ _______------------________--------------_______------------________------------
 
 
 The main goal of <Users /> is to render a list of users along with how may places they've been too.
+
+_______------------________--------------_______------------________-------------_______------------________
+
+- make sure to place MainNavigation above the pages which is right above the Switch statement
+
+
+_______------------________--------------_______------------________-------------_______------------________
+
+
+
+
+_______------------________--------------_______------------________-------------_______------------________
 */
