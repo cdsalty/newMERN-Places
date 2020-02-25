@@ -8,7 +8,7 @@ const App = () => {
   return (
     <Router>
       <MainNavigation />
-      <main className="this-creates-seperation-from-the-NavigationBar">
+      <main className="this-creates-padding-from-the-NavigationBar">
         <Switch>
           <Route path="/" exact>
             <Users />
