@@ -1,23 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom'; // in order for the header to have links
 
 import MainHeader from './MainHeader';
 import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
+import Backdrop from '../UIElements/Backdrop';
 import './MainNavigation.css';
 
 // Main Navigation will be responsible for the hamburger menu, the h1 title, the links via <nav>
 const MainNavigation = (props) => {
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+
+  const openDrawer = () => {
+    setDrawerIsOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setDrawerIsOpen(false);
+  };
+
   return (
-    // <React.Fragment>
+    // <React.Fragment> (instead of using React.Fragment to hold multiple components, just use wrap with <>)
     <>
-      <SideDrawer>
-        <nav className="main-navigation__drawer-nav">
-          <NavLinks />
-        </nav>
-      </SideDrawer>
+      {drawerIsOpen && <Backdrop onClick={closeDrawer} />}
+      {drawerIsOpen ? (
+        <SideDrawer>
+          <nav className="main-navigation__drawer-nav">
+            <NavLinks />
+          </nav>
+        </SideDrawer>
+      ) : null}
+
       <MainHeader>
-        <button className="main-navigation__menu-btn">
+        <button onClick={openDrawer} className="main-navigation__menu-btn">
           <span />
           <span />
           <span />
@@ -27,7 +42,6 @@ const MainNavigation = (props) => {
           <Link to="/">Mapolicity</Link>
         </h1>
 
-        {/* the nav class below is set to a display of none to get ride of side links */}
         <nav className="main-navigation__header-nav">
           <NavLinks />
         </nav>
@@ -39,7 +53,7 @@ const MainNavigation = (props) => {
 export default MainNavigation;
 
 /*
-- inside MainHeader, represents whatever is inside props.children
+- inside of MainHeader, is represented by whatever is inside props.children
 - the three <span> tags will make up the hamburger menu
 
 - In order to make the Header CLICKABLE, must import { Link } from 'react-router-dom';
@@ -49,4 +63,16 @@ export default MainNavigation;
   - make it habit: <Link to = '/'>DEFINE YOUrplaces</Link>
 
   by surrounding <> </> with my elements, I didn't have to use react.fragment
+
+  SideDrawer is passing props.children
+
+  Introducing State with Hooks,
+  const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+  const [variable to reference, function that will call it] = useState(setting The Inital Value)
+  - using the ternary operator, I control whether the dropdown is showing or isn't by setting the intial 
+    value to false.
+     - when you click on the button, open the drawer:
+    assign an onClick and assign the function to navigate state's value
+
+If drawerIsOpen is true, then render this else... it will move on...
 */

@@ -13,6 +13,20 @@ export default MainHeader;
   - The <MainHeader> component will be used inside MainNavigation. 
   - in MainNavigation, anything called between <MainHeader>this Will be Referenced 
     inside mainNavigation</MainHeader> and will refer to what's inside props.children. 
+    - INLCUDES: 
+      <button className="main-navigation__menu-btn">
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <h1 className="main-navigation__title">
+          <Link to="/">Mapolicity</Link>
+        </h1>
+
+        <nav className="main-navigation__header-nav">
+          <NavLinks />
+        </nav>
 
 
 
