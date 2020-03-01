@@ -34,13 +34,13 @@ const DUMMY_DATA_PLACES = [
 
 const UserPlaces = () => {
   return <PlaceList items={DUMMY_DATA_PLACES} />;
-  // this is why items is referred to as each component that is passed within/passed down;
+  // this is why "items", is referred to in each component that's passed passed down;
 };
 
 export default UserPlaces;
 
 /*
+** ITEMS is the key... ITEMS is the prop being passed down. 
 
-https://cdn.britannica.com/s:800x450,c:crop/31/204431-138-B5008F47/time-lapse-video-San-Francisco.jpg
 
 */

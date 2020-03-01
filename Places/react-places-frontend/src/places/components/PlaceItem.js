@@ -28,3 +28,10 @@ const PlaceItem = (props) => {
 };
 
 export default PlaceItem;
+
+/*
+
+View In Map will be overlay (will create later)
+Edit and Delete will only be visible if user (will create later)
+
+*/
