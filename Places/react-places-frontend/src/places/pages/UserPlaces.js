@@ -1,5 +1,7 @@
 // responsible for showing all the places of a user
 import React from 'react';
+import {useParams} from 'react-router-dom';
+
 import PlaceList from '../components/PlaceList';
 
 const DUMMY_DATA_PLACES = [
@@ -33,8 +35,9 @@ const DUMMY_DATA_PLACES = [
 ];
 
 const UserPlaces = () => {
-  return <PlaceList items={DUMMY_DATA_PLACES} />;
-  // this is why "items", is referred to in each component that's passed passed down;
+  // return <PlaceList items={DUMMY_DATA_PLACES} />; this will return ALL places, not user specific
+  // const userId = useParams().userId; // useParams will give us the userId to compare to
+  console.log(useParams()); // ** returns 'userId: "u1"
 };
 
 export default UserPlaces;
@@ -42,5 +45,9 @@ export default UserPlaces;
 /*
 ** ITEMS is the key... ITEMS is the prop being passed down. 
 
+- to access/render only the specific user's  places:
+  1. get the dynamic data in the url from useParams hook
+  2. run a filter on the data from the url and only filter/RETURN a new array of that specific's user's places
 
+  - useParams returns an object that has the 'dynamic segments' steup in the route config as properties. 
 */
