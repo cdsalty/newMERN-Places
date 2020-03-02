@@ -35,9 +35,12 @@ const DUMMY_DATA_PLACES = [
 ];
 
 const UserPlaces = () => {
-  // return <PlaceList items={DUMMY_DATA_PLACES} />; this will return ALL places, not user specific
-  // const userId = useParams().userId; // useParams will give us the userId to compare to
-  console.log(useParams()); // ** returns 'userId: "u1"
+  // return <PlaceList items={DUMMY_DATA_PLACES} />;
+  // console.log(useParams()); // ** returns 'userId: "u1"
+  const userId = useParams().userId;
+  const loadedPlaces = DUMMY_DATA_PLACES.filter((places) => places.creator === userId);
+
+  return <PlaceList items={loadedPlaces} />; // **
 };
 
 export default UserPlaces;
@@ -50,4 +53,17 @@ export default UserPlaces;
   2. run a filter on the data from the url and only filter/RETURN a new array of that specific's user's places
 
   - useParams returns an object that has the 'dynamic segments' steup in the route config as properties. 
-*/
+
+
+
+const UserPlaces = () => {
+  // return <PlaceList items={DUMMY_DATA_PLACES} />; this will return ALL places, not user specific
+  // console.log(useParams()); // ** returns 'userId: "u1"
+  const userId = useParams().userId; // useParams will provide the userId to compare to (above)
+  
+  Review Syntax:
+  
+  const loadedPlaces = DUMMY_DATA_PLACES.filter((places) => places.creator === userId); // MUST REMEMBER THIS SYNTAX
+  
+  
+  */
