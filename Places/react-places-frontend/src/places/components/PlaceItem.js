@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Card from '../../shared/components/UIElements/Card';
 import Button from '../../shared/components/FormElements/Button';
 import Modal from '../../shared/components/UIElements/Modal';
+import Map from '../../shared/components/UIElements/Map';
 import './PlaceItem.css';
 
 // the layout, creating one layout to serve for each place;
@@ -28,8 +29,8 @@ const PlaceItem = (props) => {
       >
         {/* specifing what will be rendered inside the ModalOverlay for 'props.children */}
         <div className="map-container">
-          {/* where the map will be placed */}
-          <h2>This is a map</h2>
+          {/* <h2>This is a map</h2> */}
+          <Map center={props.coordinates} zoom={12} />
         </div>
       </Modal>
       <li className="place-item">
