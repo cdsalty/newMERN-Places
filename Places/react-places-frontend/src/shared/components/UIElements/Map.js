@@ -2,6 +2,8 @@ import React, {useRef, useEffect} from 'react';
 
 import './Map.css';
 
+// Reference: https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+
 const Map = (props) => {
   const mapRef = useRef();
 
