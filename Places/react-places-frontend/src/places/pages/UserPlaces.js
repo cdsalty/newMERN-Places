@@ -54,6 +54,9 @@ export default UserPlaces;
 
   - useParams returns an object that has the 'dynamic segments' steup in the route config as properties. 
 
+https://www.blueswell.com/sites/nbsr/files/styles/short_banner_tiny/public/images/area/header/seaside-florida.jpg
+https://realestatescorecard.com/sites/default/files/styles/community_review_slideshow/public/Seaside_Florida.jpg?itok=8KjwK2qn
+
 
 
 const UserPlaces = () => {
