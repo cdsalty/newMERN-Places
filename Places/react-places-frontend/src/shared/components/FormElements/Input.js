@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useEffect} from 'react';
 
 import {validate} from '../../util/validators';
 
@@ -31,7 +31,17 @@ const Input = (props) => {
     isTouched: false,
     isValid: false
   });
-  // I will bind the value of inputState to the input vlaue where it will be called on dispatch
+  // I will bind the value of inputState to the input value where it will be called on dispatch
+
+  // READ NOTES AT BOTTOM REGARDING useEffect
+  // useEffect will run anytime props or inputState makes any changes
+  // DESTRUCTURED:
+  const {id, onInput} = props;
+  const {value, isValid} = inputState;
+  // for the <Input in NewPlace />
+  useEffect(() => {
+    onInput(id, value, isValid);
+  }, [id, value, isValid, onInput]);
 
   // onChange Trigger (also referred to as 'changeHandler')
   const handleChange = (event) => {
@@ -93,4 +103,21 @@ rows={props.rows || 3}     ----> 3 is default if not stated...
   - UseReducer: pass it at least one arguement and it receives an action (that I will dispatch) and the 
     current state. Then update the current state based on the action received, return the new state
     and then useReducer will take the new state and give it back in the component and rerender everything. 
+
+// useEffect will run anytime props or inputState makes any changes
+
+**** (without destructuring) *****
+  useEffect(() => {
+    props.onInput(props.id, inputState.value, inputState.isValid);
+  }, [props, inputState]);
+        -> instead of the option above, I have to use destructuring to PREVENT an infinite loop. I found
+        it was easy to break it down each line... 
+
+  const { id, onInput } = props; // (now just go inside useEffect and pull out 'props' anywhere it is written)
+  const { value, isValid } = inputState; // (now remove instances of inputState)
+
+  useEffect(() => {
+    onInput(id, value, isValid)
+  }, [id, value, isValid, onInput]);
+
 */
